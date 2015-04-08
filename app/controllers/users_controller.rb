@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
-	def new
-	end
+class UsersController < ApplicationController
 
+  def show
+    @user = User.find(params[:username])
+  end
 
-	def create
-		render plain: params[:user].inspect
-	end
+  def new
+    @user = User.new
+  end
+end
 end
