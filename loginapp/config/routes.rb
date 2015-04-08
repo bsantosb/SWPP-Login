@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :users
 
-  get '/users/new'
+  get 'users/new'
   root 'users#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
