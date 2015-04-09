@@ -1,1 +1,1 @@
-web: bundle exec unicorn --config ./unicorn.rb --include . --port $PORT
+web: bundle exec unicorn -p $PORT -E $RACK_ENV
