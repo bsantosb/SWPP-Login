@@ -8,7 +8,25 @@
 </head>
 <body>
 
-<%= yield %>
+    <%= yield %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+
+    </div>
+
+    <nav class="a"> 
+      <ul>
+          <% if current_user %>
+              Welcome <span class="info"><%= current_user.username %></span></br>
+              You have logged in <span class="info"><%= current_user.count %> </span>times</br>
+              </br> </br>
+              <%= link_to "Log Out", logout_path, method: :delete %>
+          <% end %>
+       </ul>
+     </nav>
+
 
 </body>
 </html>

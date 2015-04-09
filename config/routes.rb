@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-  root 'welcome#index'
 
 
+  get '/login', to: "sessions#new"
+  post '/login', to:"sessions#create"
+  delete "/logout", to: "sessions#destroy", as: "logout"
+  get '/signup', to: "users#new"
+  get '/signup', to: "users#create"
+  get '/clearData', to: 'users#destroy', as: "clearData"
+  post '/clearData', to: 'users#destroy'
 
+  root :to => '/signup', to: 'users#new'
   resources :users
-
-
-  #root             'static_pages#home'
-  #get 'help'    => 'static_pages#help'
-  #get 'about'   => 'static_pages#about'
-  #get 'contact' => 'static_pages#contact'
-  get 'signup'  => 'users#new'
+ 
+  namespace :api do
+      resources :users
+      post '/login', to:"sessions#create"
+      post '/signup', to:"users#create"
+      post '/clearData', to: 'users#destroy', as: "clearData"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
