@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150408024008) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password"
     t.integer  "count"
